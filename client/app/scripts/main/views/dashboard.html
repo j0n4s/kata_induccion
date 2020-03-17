@@ -1,7 +1,8 @@
-<h3>Available Katas:</h3>
-
-<div class="buttonPanel">
-    <div class="button">
-        <a href="#/group" class="linkWithoutDecoration kataFont">Select group</a>
+<h3>INGRESE LOS GRUPOS</h3>
+    <div class="form-group" ng-repeat="pareja in parejas">
+      <label for="grupos">{{pareja.label}}</label>
+      <input type="text" class="form-control" id="pareja{{pareja.id}}" placeholder="Pareja {{pareja.id}}">
+      <small  class="form-text text-muted">Deben estar separados por ;(ej: 1001;2001)</small>
     </div>
-</div>
+<button type="button" class="btn btn-primary" ng-click="enviarGrupos()">Submit</button>
+</form>

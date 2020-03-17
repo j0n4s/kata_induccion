@@ -6,7 +6,7 @@ angular.module('App', [
 ])
 .config(function ($routeProvider) {
   $routeProvider
-  .when('/', {
+  .when("/", {
     templateUrl: 'scripts/main/views/dashboard.html'
   });
 });

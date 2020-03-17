@@ -2,6 +2,7 @@
 
 var express = require('express');
 var http = require('http');
+var crearGrupo = require('../client/app/scripts/main/specs/ajax.js').crearGrupo;
 
 var app = express();
 
@@ -13,6 +14,10 @@ try {
   app.use(require('less-middleware')(__dirname + '/../client/app'));
   app.use('/', express['static'](__dirname + '/../client/app'));
   app.use(express.errorHandler());
+  app.post('/enviarGrupos',function(req,res){
+    var grupo =  crearGrupo(req.body.data);
+    res.send("PRUEBA")
+  })
 
   app.use(app.router);
 }
