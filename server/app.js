@@ -15,8 +15,8 @@ try {
   app.use('/', express['static'](__dirname + '/../client/app'));
   app.use(express.errorHandler());
   app.post('/enviarGrupos',function(req,res){
-    var grupo =  crearGrupo(req.body.data);
-    res.send("PRUEBA")
+    var empleados =  crearGrupo(req.body.data);
+    res.send(empleados)
   })
 
   app.use(app.router);
