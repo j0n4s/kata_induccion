@@ -8,7 +8,7 @@
     "url": "git@github.com:j0n4s/kata_mines.git"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "jest"
   },
   "dependencies": {},
   "devDependencies": {
@@ -20,6 +20,7 @@
     "grunt-karma": ">=0.12.2",
     "jasmine": "^2.8.0",
     "jasmine-core": "^2.8.0",
+    "jest": "^25.1.0",
     "karma": "^1.7.0",
     "karma-coverage": ">=0.5.5",
     "karma-jasmine": "^1.1.0",
