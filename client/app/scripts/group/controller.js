@@ -2,22 +2,25 @@
 
 angular.module('Group')
 .controller('group', function ($scope) {
-
+  
+  $scope.inputs = [null,null];
+  $scope.pairs = [[null,null],[null,null]];
   $scope.controller_loaded = 'Group loaded!';
-
-  $scope.registro = function(p1,p2){
-    console.log('pares 1 =', p1, 'pares 2 =', p2);
-    
-    return [2011];
+  $scope.add  = function(numbers){
+    var suma = 0;
+    for(var contador=0;contador<numbers.length;contador++){
+      suma += Number(numbers[contador]);
+    }
+    $scope.result = suma;
   };
-
-
-
+  $scope.create_group = function(pairs){
+    
+  }
 })
 .config(function ($routeProvider) {
   $routeProvider
   .when('/group', {
-    templateUrl: 'scripts/group/views/group.html',
+    templateUrl: 'scripts/group/views/group_pair.html',
     controller: 'group'
   });
 });

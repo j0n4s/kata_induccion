@@ -16,17 +16,37 @@ describe('Controller: select group', function () {
     it('should set "controller_loaded" variable in scope', function () {
       expect(scope.controller_loaded).toContain('loaded');
     });
-    
-    it('should return case 1', function () {
-      var result = scope.registro([1009 ,1017],[2011,2011]);
 
-      expect(result).toEqual([2011]);
+    it('should defined pairs in scope', function (){
+      expect(scope.pairs).toEqual([[null,null],[null,null]]);
+    });
+
+    it('should defined input in scope', function (){
+      expect(scope.inputs).toEqual([null,null]);
     });
     
-    it('should return case 2', function () {
-      
+  });
+
+  describe('When add',function(){
+    it('should called function and return number',function(){
+      scope.add(['2','1','3']);
+      expect(scope.result).toBe(6);
     });
   });
+
+  describe('When create a group',function(){
+    it('should called function and return an array',function(){
+      scope.create_group([[1009,2011],[1017,2011]]);
+      expect(scope.result).toBe([2011]);
+    });
+
+    it('should called function and return an array',function(){
+      scope.create_group([[1009,2000],[1017,2001],[1002,2002],[1002,2002]]);
+      expect(scope.result).toBe([2002,1009]);
+    });
+  });
+
+
 
   describe('when going to /group', function () {
 
@@ -38,7 +58,7 @@ describe('Controller: select group', function () {
       rootScope = $rootScope;
       httpBackend = $httpBackend;
 
-      httpBackend.when('GET', 'scripts/group/views/group.html').respond('<div></div>');
+      httpBackend.when('GET', 'scripts/group/views/group_pair.html').respond('<div></div>');
     }));
 
     afterEach(function () {
@@ -53,7 +73,7 @@ describe('Controller: select group', function () {
 
       httpBackend.flush();
 
-      expect(route.current.templateUrl).toBe('scripts/group/views/group.html');
+      expect(route.current.templateUrl).toBe('scripts/group/views/group_pair.html');
       expect(route.current.controller).toBe('group');
     });
   });

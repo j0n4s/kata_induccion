@@ -1,0 +1,12 @@
+<h3>Group</h3>
+<br>
+<div>  
+  <div ng-repeat="input in inputs track by $index ">
+
+    Número {{$index+1}}<input type="text" ng-model="inputs[$index]"/>
+  </div>
+  {{inputs}}
+  <button type="button" ng-click="add(inputs)">SUMAR</button>
+  {{result}}
+  <br><a href="#/" class="kataFont">Home</a>
+</div>
