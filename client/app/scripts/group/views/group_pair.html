@@ -1,12 +1,11 @@
 <h3>Group</h3>
 <br>
 <div>  
-  <div ng-repeat="input in inputs track by $index ">
-
-    Número {{$index+1}}<input type="text" ng-model="inputs[$index]"/>
+  <div ng-repeat="pair in pairs track by $index">
+    Pair {{$index+1}}<input type="text" ng-model="pairs[$index][0]"/>
+    Pair {{$index+1}}<input type="text" ng-model="pairs[$index][1]"/>
   </div>
-  {{inputs}}
-  <button type="button" ng-click="add(inputs)">SUMAR</button>
-  {{result}}
+  <button type="button" ng-click="create_group(pairs)">CREATE GROUP</button>  
+  <p>The selected group is: {{employees_selected}} </p>
   <br><a href="#/" class="kataFont">Home</a>
 </div>

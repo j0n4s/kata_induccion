@@ -18,7 +18,7 @@ describe('Controller: select group', function () {
     });
 
     it('should defined pairs in scope', function (){
-      expect(scope.pairs).toEqual([[null,null],[null,null]]);
+      expect(scope.pairs).toEqual([[null,null],[null,null],[null,null],[null,null]]);
     });
 
     it('should defined input in scope', function (){
@@ -35,14 +35,51 @@ describe('Controller: select group', function () {
   });
 
   describe('When create a group',function(){
-    it('should called function and return an array',function(){
-      scope.create_group([[1009,2011],[1017,2011]]);
-      expect(scope.result).toBe([2011]);
+    it('should called function and count and sort repetitions in array',function(){
+      scope.count_repetitions_pairs([[1009,2011],[1017,2011],[null,null],[null,null]]);
+      expect(scope.repetitions_employees).toEqual([{
+                index: 2011,
+                value: 2
+            },{
+                index: 1009,
+                value: 1
+            },{
+              index: 1017,
+              value: 1
+            }]);
+    });
+    
+    it('should called function and count and sort repetitions in array',function(){
+      scope.count_repetitions_pairs([[1009,2000],[1009,2001],[1002,2002],[1003,2002]]);
+      expect(scope.repetitions_employees).toEqual([{
+                index: 1009,
+                value: 2
+            },{
+              index: 2002,
+              value: 2
+            },{
+              index: 1002,
+              value: 1
+            },{
+              index: 1003,
+              value: 1
+            },{
+              index: 2000,
+              value: 1
+            },{
+              index: 2001,
+              value: 1
+            }]);
     });
 
     it('should called function and return an array',function(){
-      scope.create_group([[1009,2000],[1017,2001],[1002,2002],[1002,2002]]);
-      expect(scope.result).toBe([2002,1009]);
+      scope.create_group([['1009','2011'],['1017','2011'],[null,null],[null,null]]);
+      expect(scope.employees_selected).toEqual([2011]);
+    });
+
+    it('should called function and return an array',function(){
+      scope.create_group([['1009','2000'],['1009','2001'],['1002','2002'],['1003','2002']]);
+      expect(scope.employees_selected).toEqual([1009,2002]);
     });
   });
 
