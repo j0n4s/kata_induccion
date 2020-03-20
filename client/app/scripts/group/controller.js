@@ -35,19 +35,21 @@ angular.module('Group')
 
   $scope.count_repetitions_pairs = function (pairs){    
     $scope.repetitions_employees = [];
+    var empleado_estocolmo = 0;
+    var empleado_londres = 1;
     for (var count = 0; count < pairs.length; count++){
-        var count_repetition_position0 = 0;
-        var count_repetition_position1 = 0;
+        var count_repetition_empleado_estocolmo = 0;
+        var count_repetition_empleado_londres = 0;
         for (var count_repeat = 0; count_repeat < pairs.length; count_repeat++) {
-              if ((Number(pairs[count][0]) === Number(pairs[count_repeat][0])) || (Number(pairs[count][0]) === Number(pairs[count_repeat][1]))) {
-                count_repetition_position0++;
+              if ((Number(pairs[count][empleado_estocolmo]) === Number(pairs[count_repeat][empleado_estocolmo])) || (Number(pairs[count][empleado_estocolmo]) === Number(pairs[count_repeat][empleado_londres]))) {
+                count_repetition_empleado_estocolmo++;
               }
-              if ((Number(pairs[count][1]) === Number(pairs[count_repeat][1])) || (Number(pairs[count][1]) === Number(pairs[count_repeat][0]))) {
-                count_repetition_position1++;
+              if ((Number(pairs[count][empleado_londres]) === Number(pairs[count_repeat][empleado_londres])) || (Number(pairs[count][empleado_londres]) === Number(pairs[count_repeat][empleado_estocolmo]))) {
+                count_repetition_empleado_londres++;
               }
         }
-        $scope.repetitions_employees[pairs[count][0]] = count_repetition_position0;
-        $scope.repetitions_employees[pairs[count][1]] = count_repetition_position1;
+        $scope.repetitions_employees[pairs[count][empleado_estocolmo]] = count_repetition_empleado_estocolmo;
+        $scope.repetitions_employees[pairs[count][empleado_londres]] = count_repetition_empleado_londres;
     }
     $scope.sort_repetitions();
   };
@@ -69,8 +71,8 @@ angular.module('Group')
 
   $scope.in_array = function (needle, haystack) {
     var length = haystack.length;
-    for (var i = 0; i < length; i++) {
-        if (haystack[i] === needle){
+    for (var contador = 0; contador < length; contador++) {
+        if (haystack[contador] === needle){
            return true;
         }
     }
