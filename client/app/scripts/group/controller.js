@@ -14,17 +14,17 @@ angular.module('Group')
     $scope.result = suma;
   };
   $scope.create_group = function(pairs){
-    var repetitions_pairs = $scope.count_repetitions_pairs(pairs);    
+    
+    $scope.count_repetitions_pairs(pairs);
     var pairs_selected = [];
     $scope.employees_selected = [];
-    repetitions_pairs.forEach(function(employee) {
+    $scope.repetitions_employees.forEach(function(employee) { 
         for (var count = 0; count < pairs.length; count++) {
             if (!$scope.in_array(count, pairs_selected)) {
                 if (Number(pairs[count][0]) === Number(employee.index) || Number(pairs[count][1]) === Number(employee.index)) {
                       pairs_selected.push(count);
                     if (!$scope.in_array(Number(employee.index), $scope.employees_selected) && Number(employee.index) > 0) {
                       $scope.employees_selected.push(Number(employee.index));
-                      console.log(employee.index);
                     }
                 }
             }
@@ -33,7 +33,7 @@ angular.module('Group')
     console.log($scope.employees_selected);
   };
 
-  $scope.count_repetitions_pairs = function (pairs){
+  $scope.count_repetitions_pairs = function (pairs){    
     $scope.repetitions_employees = [];
     for (var count = 0; count < pairs.length; count++){
         var count_repetition_position0 = 0;
@@ -49,24 +49,22 @@ angular.module('Group')
         $scope.repetitions_employees[pairs[count][0]] = count_repetition_position0;
         $scope.repetitions_employees[pairs[count][1]] = count_repetition_position1;
     }
-    $scope.repetitions_employees = $scope.sort_repetitions($scope.repetitions_employees);    
-    return $scope.repetitions_employees;
+    $scope.sort_repetitions();
   };
 
-  $scope.sort_repetitions = function (repetitions_employees) {
-      repetitions_employees = repetitions_employees.map(function(repetitions, employee){
+  $scope.sort_repetitions = function () {
+    $scope.repetitions_employees = $scope.repetitions_employees.map(function(repetitions, employee){
           return {
             index: employee,
             value: repetitions
           };
       });
-      repetitions_employees.sort(function(a, b){
+      $scope.repetitions_employees.sort(function(a, b){
             return b.value - a.value;
       });
-      repetitions_employees = repetitions_employees.filter(function(index){
+      $scope.repetitions_employees = $scope.repetitions_employees.filter(function(index){
             return index !== undefined;
       });
-      return repetitions_employees;
   };
 
   $scope.in_array = function (needle, haystack) {
@@ -77,6 +75,10 @@ angular.module('Group')
         }
     }
     return false;
+  };
+
+  $scope.add_group = function(){
+    $scope.pairs.push([null,null]);    
   };
 })
 .config(function ($routeProvider) {
