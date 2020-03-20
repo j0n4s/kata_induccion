@@ -35,21 +35,21 @@ angular.module('Group')
 
   $scope.count_repetitions_pairs = function (pairs){    
     $scope.repetitions_employees = [];
-    var empleado_estocolmo = 0;
-    var empleado_londres = 1;
-    for (var count = 0; count < pairs.length; count++){
-        var count_repetition_empleado_estocolmo = 0;
-        var count_repetition_empleado_londres = 0;
-        for (var count_repeat = 0; count_repeat < pairs.length; count_repeat++) {
-              if ((Number(pairs[count][empleado_estocolmo]) === Number(pairs[count_repeat][empleado_estocolmo])) || (Number(pairs[count][empleado_estocolmo]) === Number(pairs[count_repeat][empleado_londres]))) {
-                count_repetition_empleado_estocolmo++;
+    var estocolmo_employee = 0;
+    var londres_employee = 1;
+    for (var count_pairs = 0; count_pairs < pairs.length; count_pairs++){
+        var count_repetition_estocolmo_employee = 0;
+        var count_repetition_londres_employee = 0;
+        for (var count_pairs_repeat = 0; count_pairs_repeat < pairs.length; count_pairs_repeat++) {
+              if ((Number(pairs[count_pairs][estocolmo_employee]) === Number(pairs[count_pairs_repeat][estocolmo_employee])) || (Number(pairs[count_pairs][estocolmo_employee]) === Number(pairs[count_pairs_repeat][londres_employee]))) {
+                count_repetition_estocolmo_employee++;
               }
-              if ((Number(pairs[count][empleado_londres]) === Number(pairs[count_repeat][empleado_londres])) || (Number(pairs[count][empleado_londres]) === Number(pairs[count_repeat][empleado_estocolmo]))) {
-                count_repetition_empleado_londres++;
+              if ((Number(pairs[count_pairs][londres_employee]) === Number(pairs[count_pairs_repeat][londres_employee])) || (Number(pairs[count_pairs][londres_employee]) === Number(pairs[count_pairs_repeat][estocolmo_employee]))) {
+                count_repetition_londres_employee++;
               }
         }
-        $scope.repetitions_employees[pairs[count][empleado_estocolmo]] = count_repetition_empleado_estocolmo;
-        $scope.repetitions_employees[pairs[count][empleado_londres]] = count_repetition_empleado_londres;
+        $scope.repetitions_employees[pairs[count_pairs][estocolmo_employee]] = count_repetition_estocolmo_employee;
+        $scope.repetitions_employees[pairs[count_pairs][londres_employee]] = count_repetition_londres_employee;
     }
     $scope.sort_repetitions();
   };
