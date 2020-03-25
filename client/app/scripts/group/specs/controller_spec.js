@@ -45,56 +45,69 @@ describe('Controller: select group', function () {
     it('should called function and count and sort repetitions in array',function(){
       scope.count_repetitions_pairs([[1009,2011],[1017,2011],[null,null],[null,null]]);
       expect(scope.repetitions_employees).toEqual([{
-                index: 2011,
-                value: 2
+                id: 2011,
+                repetitions: 2,
+                pairs: [0,1]
             },{
-                index: 1009,
-                value: 1
+                id: 1009,
+                repetitions: 1,
+                pairs: [0]
             },{
-              index: 1017,
-              value: 1
+              id: 1017,
+              repetitions: 1,
+              pairs: [1]
             }]);
     });
 
     it('should called function and count and sort repetitions in array',function(){
       scope.count_repetitions_pairs([[1001,2004],[1001,2002],[1003,2004],[1001,2002],[1004,2004]]);
       expect(scope.repetitions_employees).toEqual([{
-                index: 1001,
-                value: 3
+                id: 1001,
+                repetitions: 3,
+                pairs: [0,1,3]
             },{
-              index: 2004,
-              value: 3
+              id: 2004,
+              repetitions: 3,
+              pairs: [0,2,4]
             },
             {
-              index: 2002,
-              value: 2
+              id: 2002,
+              repetitions: 2,
+              pairs: [1,3]
             },{
-              index: 1003,
-              value: 1
+              id: 1003,
+              repetitions: 1,
+              pairs: [2]
             },{
-              index: 1004,
-              value: 1
+              id: 1004,
+              repetitions: 1,
+              pairs: [4]
             }]);
     });
 
     it('should called function and count and sort repetitions in array',function(){
       scope.count_repetitions_pairs([[1004,2001],[1002,2001],[1004,2003],[1002,2001],[1004,2004]]);
       expect(scope.repetitions_employees).toEqual([{
-                index: 1004,
-                value: 3
+                id: 1004,
+                repetitions: 3,
+                pairs: [0,2,4]
             },{
-              index: 2001,
-              value: 3
+              id: 2001,
+              repetitions: 3,
+              pairs: [0,1,3]
             },
             {
-              index: 1002,
-              value: 2
+              id: 1002,
+              repetitions: 2,
+              pairs: [1,3]
             },{
-              index: 2003,
-              value: 1
+              id: 2003,
+              repetitions: 1,
+              pairs: [2]
             },{
-              index: 2004,
-              value: 1
+              id: 2004,
+              repetitions: 1,
+              pairs: [4]
             }]);
     });
 
@@ -102,44 +115,120 @@ describe('Controller: select group', function () {
     it('should called function and count and sort repetitions in array',function(){
       scope.count_repetitions_pairs([[1009,2000],[1009,2001],[1002,2002],[1003,2002]]);
       expect(scope.repetitions_employees).toEqual([{
-                index: 1009,
-                value: 2
+                id: 1009,
+                repetitions: 2,
+                pairs: [0,1]
             },{
-              index: 2002,
-              value: 2
+              id: 2002,
+              repetitions: 2,
+              pairs: [2,3]
             },{
-              index: 1002,
-              value: 1
+              id: 2000,
+              repetitions: 1,
+              pairs: [0]
             },{
-              index: 1003,
-              value: 1
+              id: 2001,
+              repetitions: 1,
+              pairs: [1]
             },{
-              index: 2000,
-              value: 1
+              id: 1002,
+              repetitions: 1,
+              pairs: [2]
             },{
-              index: 2001,
-              value: 1
+              id: 1003,
+              repetitions: 1,
+              pairs: [3]
             }]);
     });
-
+    
+    it('should called function and count and sort repetitions in array',function(){
+      scope.count_repetitions_pairs([[1,11],[2,11],[1,12],[3,12],[1,13],[4,13],[1,14],[5,14]]);
+      expect(scope.repetitions_employees).toEqual([{
+                id: 1,
+                repetitions: 4,
+                pairs: [0,2,4,6]
+            },{
+              id: 11,
+              repetitions: 2,
+              pairs: [0,1]
+            },{
+              id: 12,
+              repetitions: 2,
+              pairs: [2,3]
+            },{
+              id: 13,
+              repetitions: 2,
+              pairs: [4,5]
+            },{
+              id: 14,
+              repetitions: 2,
+              pairs: [6,7]
+            },{
+              id: 2,
+              repetitions: 1,
+              pairs: [1]
+            },{
+              id: 3,
+              repetitions: 1,
+              pairs: [3]
+            },{
+              id: 4,
+              repetitions: 1,
+              pairs: [5]
+            },{
+              id: 5,
+              repetitions: 1,
+              pairs: [7]
+            }]);
+    });
     it('should called function and return an array',function(){
       scope.create_group([['1009','2011'],['1017','2011'],[null,null],[null,null]]);
-      expect(scope.employees_selected).toEqual([2011]);
+      expect(scope.employees_better_selected).toEqual([2011]);
     });
 
     it('should called function and return an array',function(){
       scope.create_group([['1009','2000'],['1009','2001'],['1002','2002'],['1003','2002']]);
-      expect(scope.employees_selected).toEqual([1009,2002]);
+      expect(scope.employees_better_selected).toEqual([1009,2002]);
     });
 
     it('should called function and return an array',function(){
       scope.create_group([[1001,2004],[1001,2002],[1003,2004],[1001,2002],[1004,2004]]);
-      expect(scope.employees_selected).toEqual([1001,2004]);
+      expect(scope.employees_better_selected).toEqual([1001,2004]);
     });
 
     it('should called function and return an array',function(){
       scope.create_group([[1004,2001],[1002,2001],[1004,2003],[1002,2001],[1004,2004]]);
-      expect(scope.employees_selected).toEqual([1004,2001]);
+      expect(scope.employees_better_selected).toEqual([1004,2001]);
+    });
+
+    fit('should called function and return an array',function(){
+      scope.create_group([[1,11],[2,11],[1,12],[3,12],[1,13],[4,13],[1,14],[5,14]]);
+      expect(scope.employees_selected).toEqual([{
+                id: 1,
+                repetitions: 4,
+                pairs: []
+            },{
+              id: 11,
+              repetitions: 2,
+              pairs: [0,1]
+            },{
+              id: 12,
+              repetitions: 2,
+              pairs: [2,3]
+            },{
+              id: 13,
+              repetitions: 2,
+              pairs: [4,5]
+            },{
+              id: 14,
+              repetitions: 2,
+              pairs: [6,7]
+            }]);
+    });
+
+    it('should called function and return an array',function(){
+      scope.create_group([[1,11],[2,11],[1,12],[3,12],[1,13],[4,13],[1,14],[5,14]]);
+      expect(scope.employees_better_selected).toEqual([11,12,13,14]);
     });
   });
 
