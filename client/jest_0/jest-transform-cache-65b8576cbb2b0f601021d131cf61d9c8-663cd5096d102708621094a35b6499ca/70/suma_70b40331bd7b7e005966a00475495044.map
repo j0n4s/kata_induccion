@@ -1,0 +1,1 @@
+{"version":3,"sources":["suma.js"],"names":["suma","a","b","module","exports"],"mappings":"AAAA,SAASA,IAAT,CAAcC,CAAd,EAAiBC,CAAjB,EAAoB;AAChB,SAAOD,CAAC,GAAGC,CAAX;AACD;;AACDC,MAAM,CAACC,OAAP,GAAiBJ,IAAjB","sourcesContent":["function suma(a, b) {\n    return a + b;\n  }\n  module.exports = suma;"]}
