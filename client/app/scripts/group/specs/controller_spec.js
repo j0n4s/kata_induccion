@@ -18,32 +18,21 @@ describe('Controller: select group', function () {
     });   
 
     it('should defined pairs in scope', function (){
-      expect(scope.pairs).toEqual([[null,null],[null,null],[null,null],[null,null]]);
-    });
-
-    it('should defined input in scope', function (){
-      expect(scope.inputs).toEqual([null,null]);
-    });
-    
-  });
-
-  describe('When add',function(){
-    it('should called function and return number',function(){
-      scope.add(['2','1','3']);
-      expect(scope.result).toBe(6);
+      expect(scope.pairs).toEqual([[null,null],[null,null]]);
     });
   });
+
 
   describe('When add group',function(){
     it('should called function and push an new pair',function(){
       scope.add_group();
-      expect(scope.pairs).toEqual([[null,null],[null,null],[null,null],[null,null],[null,null]]);
+      expect(scope.pairs).toEqual([[null,null],[null,null],[null,null]]);
     });
   });
 
   describe('When create a group',function(){
     it('should called function and count and sort repetitions in array',function(){
-      scope.count_repetitions_sort_pairs([[1009,2011],[1017,2011],[null,null],[null,null]]);
+      scope.get_pairs_repetitions([[1009,2011],[1017,2011]]);
       expect(scope.repetitions_employees).toEqual([{
                 id: 2011,
                 repetitions: 2,
@@ -60,7 +49,7 @@ describe('Controller: select group', function () {
     });
 
     it('should called function and count and sort repetitions in array',function(){
-      scope.count_repetitions_sort_pairs([[1001,2004],[1001,2002],[1003,2004],[1001,2002],[1004,2004]]);
+      scope.get_pairs_repetitions([[1001,2004],[1001,2002],[1003,2004],[1001,2002],[1004,2004]]);
       expect(scope.repetitions_employees).toEqual([{
                 id: 2004,
                 repetitions: 3,
@@ -85,7 +74,7 @@ describe('Controller: select group', function () {
     });
 
     it('should called function and count and sort repetitions in array',function(){
-      scope.count_repetitions_sort_pairs([[1004,2001],[1002,2001],[1004,2003],[1002,2001],[1004,2004]]);
+      scope.get_pairs_repetitions([[1004,2001],[1002,2001],[1004,2003],[1002,2001],[1004,2004]]);
       expect(scope.repetitions_employees).toEqual([{
               id: 2001,
               repetitions: 3,
@@ -111,7 +100,7 @@ describe('Controller: select group', function () {
 
 
     it('should called function and count and sort repetitions in array',function(){
-      scope.count_repetitions_sort_pairs([[1009,2000],[1009,2001],[1002,2002],[1003,2002]]);
+      scope.get_pairs_repetitions([[1009,2000],[1009,2001],[1002,2002],[1003,2002]]);
       expect(scope.repetitions_employees).toEqual([{
               id: 2002,
               repetitions: 2,
@@ -140,7 +129,7 @@ describe('Controller: select group', function () {
     });
     
     it('should called function and count and sort repetitions in array',function(){
-      scope.count_repetitions_sort_pairs([[1,11],[2,11],[1,12],[3,12],[1,13],[4,13],[1,14],[5,14]]);
+      scope.get_pairs_repetitions([[1,11],[2,11],[1,12],[3,12],[1,13],[4,13],[1,14],[5,14]]);
       expect(scope.repetitions_employees).toEqual([{
                 id: 1,
                 repetitions: 4,
