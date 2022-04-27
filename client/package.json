@@ -12,7 +12,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": ">=1.0.1",
+    "grunt": ">=1.5.2",
     "grunt-concurrent": ">=2.3.0",
     "grunt-contrib-clean": ">=1.0.0",
     "grunt-contrib-connect": ">=1.0.1",
